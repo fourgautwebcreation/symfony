@@ -19,7 +19,7 @@ Commandes avant deploiement :
 
 - Upload FTP
 
-- Acces au commandes shell à l'url /web/app_dev.php/_console via le bundle ConsoleBundle
+- Acces au commandes console à l'url /web/app_dev.php/_console via le bundle ConsoleBundle
 préalablement installé
 - Uploader composer.json et composer.lock, puis éxecuter composer.phar install
 - Création de la base de donnée : doctrine:database:create si possible sur l'hebergement
