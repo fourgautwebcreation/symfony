@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Administration {% block title %}{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="{{asset('js/jquery.js')}}"></script>
+        <script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('js/script.js')}}"></script>
+        <script type="text/javascript" src="{{asset('js/events.js')}}"></script>
+        <script type="text/javascript" src="{{asset('js/admin.js')}}"></script>
+        <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap/css/bootstrap.min.css')}}" />
+        <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}" />
+        <link rel="stylesheet" type="text/css" href="{{asset('css/admin.css')}}" />
+        <link rel="stylesheet" type="text/css" href="{{asset('css/font-awesome/css/font-awesome.css')}}" />
+    </head>
+    <body>
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        <div class="top_admin">
+                Logged en tant que  {{app.user.username }} |
+                <a href="{{ path('fos_user_security_logout') }}">
+                    {{ 'Se déconnecter'|trans({}, 'FOSUserBundle') }}
+                </a>
+        </div>
+        {% endif %} 
+
+        {% if app.request.hasPreviousSession %}
+            {% for type, messages in app.session.flashbag.all() %}
+                {% for message in messages %}
+                    <div class="flash-{{ type }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+
+        <div>
+            {% block fos_user_content %}
+            {% endblock fos_user_content %}
+        </div>
+    </body>
+</html>

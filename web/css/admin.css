@@ -1,0 +1,91 @@
+@charset "UTF-8";
+/* Général */
+.top_admin {
+  padding: 1em 0;
+  margin-bottom: 1em;
+  border-bottom: 2px solid #4b4a4a; }
+
+input[type="submit"], button {
+  background-color: transparent;
+  color: #FFFFFF;
+  display: block;
+  margin: 1em auto !important;
+  border: 2px solid #4b4a4a;
+  -moz-border: 2px solid #4b4a4a;
+  -o-border: 2px solid #4b4a4a;
+  -webkit-border: 2px solid #4b4a4a;
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  -o-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  vertical-align: middle !important;
+  padding: 1em !important;
+  line-height: normal !important;
+  height: auto !important; }
+
+input[type="submit"]:hover, button:hover {
+  background-color: #FFFFFF;
+  color: #000000;
+  border: 2px solid #000000;
+  -moz-border: 2px solid #000000;
+  -o-border: 2px solid #000000;
+  -webkit-border: 2px solid #000000;
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  -o-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s; }
+
+form {
+  width: 100%; }
+
+/* Connexion */
+.connexion {
+  padding: 1em 0;
+  color: #FFFFFF; }
+
+.connexion input[type="submit"] {
+  width: auto;
+  margin: auto; }
+
+.connexion input[type="checkbox"] {
+  display: inline-block;
+  vertical-align: middle;
+  width: auto; }
+
+.connexion label {
+  display: inline-block;
+  vertical-align: middle; }
+
+/* Panneau d'administration */
+.insert {
+  text-align: right; }
+
+.insert i {
+  font-size: 2em;
+  color: #FFFFFF;
+  cursor: pointer; }
+
+.form_insert {
+  display: none;
+  border-bottom: 2px solid #4b4a4a;
+  margin-bottom: 1em; }
+
+.modifications .action {
+  text-align: center; }
+
+.modifications .action i {
+  color: #FFFFFF;
+  margin-right: 0.5em;
+  cursor: pointer;
+  vertical-align: middle;
+  font-size: 1.25em; }
+
+/*# sourceMappingURL=admin.css.map */

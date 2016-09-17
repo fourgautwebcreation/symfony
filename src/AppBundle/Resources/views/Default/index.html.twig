@@ -1,0 +1,58 @@
+{% extends "base.html.twig" %}
+{% use "bootstrap_3_layout.html.twig" %}
+
+{# Titre #}
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+
+{# Contenu #}
+{% block body %}
+    {{ parent() }}
+
+    <section>
+
+     {# Selection de l'entreprise #}
+     <div class="selection">
+     {{ form_start(form) }}
+      {{ form_widget(form, { 'attr': {'class': 'select_enterprise'} }) }}
+     {{ form_end(form) }}
+     </div>
+
+     {# Détails des entreprises #}
+     <div class="row echo_enterprise_head">
+      <div class="col-sm-3">
+       Nom
+      </div>
+      <div class="col-sm-3">
+       Adresse
+      </div>
+      <div class="col-sm-3">
+       Siren
+      </div>
+      <div class="col-sm-3">
+       Secteur d'activité
+      </div>
+     </div>
+
+
+     {% for enterprise in enterprises %}
+
+     <div class="row echo_enterprise" data-enterprise="{{enterprise.id}}">
+      <div class="col-sm-3">
+       {{enterprise.enterpriseName}}
+      </div>
+      <div class="col-sm-3">
+       {{enterprise.enterpriseAdress}}
+      </div>
+      <div class="col-sm-3">
+       {{enterprise.enterpriseSiren}}
+      </div>
+      <div class="col-sm-3">
+      {{enterprise.enterpriseSectorName.sectorName}}
+      </div>
+     </div>
+     {% endfor %}
+    </section>
+
+{% endblock %}

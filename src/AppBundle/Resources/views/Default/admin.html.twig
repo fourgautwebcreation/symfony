@@ -1,0 +1,97 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+{% use "bootstrap_3_layout.html.twig" %}
+
+{# Titre #}
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+
+{# Contenu #}
+{% block fos_user_content %}
+    {{ parent() }}
+
+    <section>
+
+     {# Erreurs #}
+     {% if errors is not null %}
+     <div class="row">
+      <div class="alert alert-danger">Tous les champs doivent être renseignés</div>
+     </div>
+     {% endif %}
+
+     {# Symbole +/- ajout d'une entreprise #}
+     <div class="row insert">
+      <i class="fa fa-plus" data-cible=".form_insert"></i>
+     </div>
+
+     {# Formulaire ajout d'une entreprise #}
+     <div class="row form_insert">
+      <div class="row">
+       <div class="col-sm-12">
+        <h2>Ajouter une entreprise</h2>
+       </div>
+      </div>
+      <div class="row">
+       {{ form_start(insert)}}
+       <div class="col-sm-2">
+        {{ form_row(insert.nom, {attr:{ 'class': 'form-content', 'required':'required' }}) }}
+       </div>
+       <div class="col-sm-4">
+        {{ form_row(insert.adress, {attr:{ 'class': 'form-content', 'required':'required' }}) }}
+       </div>
+       <div class="col-sm-2">
+        {{ form_row(insert.siren, {attr:{ 'class': 'form-content', 'required':'required' }}) }}
+       </div>
+       <div class="col-sm-3">
+        {{ form_row(insert.sector, {attr:{ 'class': 'form-content', 'required':'required' }}) }}
+       </div>
+      <div class="col-sm-1">
+        {{ form_row(insert.action) }}
+        {{ form_row(insert.save, {attr:{ 'class': 'form-content'}}) }}
+       </div>
+       {{ form_end(insert)}}
+      </div>
+     </div>
+
+     {# Modification des entreprises #}
+     <div class="row">
+      <div class="row">
+       <div class="col-sm-12">
+        <h2>Modifier une entreprise</h2>
+       </div>
+      </div>
+     {% for key,form in forms %}
+        <div class="row modifications">
+         {{ form_start(form.update, {attr:{'data-key':key}}) }}
+          <div class="col-sm-2">
+           {{ form_row(form.update.nom, {attr:{ 'class': 'form-content', 'required':'required' }}) }}
+          </div>
+
+          <div class="col-sm-4">
+           {{ form_row(form.update.adress, {attr:{ 'class': 'form-content', 'required':'required' }}) }}
+          </div>
+          <div class="col-sm-2">
+           {{ form_row(form.update.siren, {attr:{ 'class': 'form-content', 'required':'required' }}) }}
+          </div>
+          <div class="col-sm-3">
+           {{ form_row(form.update.sector, {attr:{ 'class': 'form-content', 'required':'required' }}) }}
+          </div>
+          <div class="col-sm-1 action">
+           {{ form_row(form.update.action) }}
+           {{ form_row(form.update.id) }}
+           <div class="form-group">
+            <i class="fa fa-pencil" data-key="{{key}}"></i>
+            <i class="fa fa-remove" data-key="{{key}}"></i>
+           </div>
+          </div>
+        {{ form_end(form.update) }}
+
+        {{ form_start(form.delete, {attr:{ 'data-key':key }}) }}
+          {{ form_widget(form.delete) }}
+        {{ form_end(form.delete) }}
+       </div>
+     {% endfor %}
+     </div>
+    </section>
+
+{% endblock %}
