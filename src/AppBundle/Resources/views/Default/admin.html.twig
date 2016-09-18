@@ -34,20 +34,21 @@
       <div class="row">
        {{ form_start(insert)}}
        <div class="col-sm-2">
-        {{ form_row(insert.nom, {attr:{ 'class': 'form-content', 'required':'required' }}) }}
+        {{ form_row(insert.EnterpriseName, {attr:{ 'class': 'form-content', 'required':'required' }}) }}
        </div>
        <div class="col-sm-4">
-        {{ form_row(insert.adress, {attr:{ 'class': 'form-content', 'required':'required' }}) }}
+        {{ form_row(insert.EnterpriseAdress, {attr:{ 'class': 'form-content', 'required':'required' }}) }}
        </div>
        <div class="col-sm-2">
-        {{ form_row(insert.siren, {attr:{ 'class': 'form-content', 'required':'required' }}) }}
+        {{ form_row(insert.EnterpriseSiren, {attr:{ 'class': 'form-content', 'required':'required' }}) }}
        </div>
        <div class="col-sm-3">
-        {{ form_row(insert.sector, {attr:{ 'class': 'form-content', 'required':'required' }}) }}
+        {{ form_row(insert.EnterpriseSector, {attr:{ 'class': 'form-content', 'required':'required' }}) }}
        </div>
       <div class="col-sm-1">
-        {{ form_row(insert.action) }}
-        {{ form_row(insert.save, {attr:{ 'class': 'form-content'}}) }}
+       <div class="form-group">
+        <input type="submit" class="form-control" value="Enregistrer" />
+       </div> 
        </div>
        {{ form_end(insert)}}
       </div>
@@ -62,22 +63,21 @@
       </div>
      {% for key,form in forms %}
         <div class="row modifications">
-         {{ form_start(form.update, {attr:{'data-key':key}}) }}
+         {{ form_start(form.update, {attr:{'data-key':key, 'class':'form_enterprise'}}) }}
           <div class="col-sm-2">
-           {{ form_row(form.update.nom, {attr:{ 'class': 'form-content', 'required':'required' }}) }}
+           {{ form_row(form.update.EnterpriseName, {attr:{ 'class': 'form-content', 'required':'required' }}) }}
           </div>
 
           <div class="col-sm-4">
-           {{ form_row(form.update.adress, {attr:{ 'class': 'form-content', 'required':'required' }}) }}
+           {{ form_row(form.update.EnterpriseAdress, {attr:{ 'class': 'form-content', 'required':'required' }}) }}
           </div>
           <div class="col-sm-2">
-           {{ form_row(form.update.siren, {attr:{ 'class': 'form-content', 'required':'required' }}) }}
+           {{ form_row(form.update.EnterpriseSiren, {attr:{ 'class': 'form-content', 'required':'required' }}) }}
           </div>
           <div class="col-sm-3">
-           {{ form_row(form.update.sector, {attr:{ 'class': 'form-content', 'required':'required' }}) }}
+           {{ form_row(form.update.EnterpriseSector, {attr:{ 'class': 'form-content', 'required':'required' }}) }}
           </div>
           <div class="col-sm-1 action">
-           {{ form_row(form.update.action) }}
            {{ form_row(form.update.id) }}
            <div class="form-group">
             <i class="fa fa-pencil" data-key="{{key}}"></i>
@@ -86,7 +86,7 @@
           </div>
         {{ form_end(form.update) }}
 
-        {{ form_start(form.delete, {attr:{ 'data-key':key }}) }}
+        {{ form_start(form.delete, {attr:{ 'data-key':key, 'class':'delete_enterprise' }}) }}
           {{ form_widget(form.delete) }}
         {{ form_end(form.delete) }}
        </div>

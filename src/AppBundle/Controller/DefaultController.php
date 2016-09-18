@@ -4,14 +4,14 @@ namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\HttpFoundation\Response;
-use AppBundle\Entity\Selection\Selection;
+use AppBundle\Selection\Selection;
+use Symfony\Component\Form\FormTypeInterface;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class DefaultController extends Controller
 {
-    public function echoForm(Array $list)
+    private function echoForm(Array $list)
     {
      $selection = new Selection();
      $array = $selection->setList($list);
@@ -28,7 +28,7 @@ class DefaultController extends Controller
 
 
     /**
-    * @Route("/")
+    * @Route("/", name="home")
     */
 
     public function indexAction()
