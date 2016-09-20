@@ -31,8 +31,8 @@ class AdminController extends Controller
    $this->select = $select;
   }
 
-  // Suppression d'une entreprise
-  private function deleteEnterprise($datas)
+  // Update d'une entreprise
+  private function updateEnterprise($datas)
   {
    $em = $this->getDoctrine()->getManager();
    $sector = $em->getRepository('AppBundle:Sectors')->find($datas->enterpriseSector);
@@ -98,7 +98,7 @@ class AdminController extends Controller
     //update
     if ($form->isValid()) {
      $datas = $form->getData();
-     self::deleteEnterprise($datas);
+     self::updateEnterprise($datas);
     }
     $forms[$i]['update'] = $form->createView();
 
