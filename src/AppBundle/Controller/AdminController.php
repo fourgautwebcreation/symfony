@@ -58,23 +58,25 @@ class AdminController extends Controller
     if ($form->isValid()) {
      $datas = $form->getData();
      if($form->get('type')->getData() == 'create') {
-      $em = $this->getDoctrine()->getManager();
-      $sector = $em->getRepository('AppBundle:Sectors')->find($datas->enterpriseSector);
-      $datas->setEnterpriseSectorName($sector);
+          $em = $this->getDoctrine()->getManager();
+          $sector = $em->getRepository('AppBundle:Sectors')->find($datas->enterpriseSector);
+          $datas->setEnterpriseSectorName($sector);
 
-      $em = $this->getDoctrine()->getManager();
-      $em->persist($datas);
-      $em->flush();
-      unset($enterprise);
-      unset($form);
-      $enterprise = new Enterprises();
-      $form = $this->createForm(Forms\InsertForm::class,
-                $enterprise,
-                array('select' => $this->select, 'type' => 'create')
-              );
+          $em = $this->getDoctrine()->getManager();
+          $em->persist($datas);
+          $em->flush();
+          unset($enterprise);
+          unset($form);
+          $enterprise = new Enterprises();
+          $form = $this->createForm(Forms\InsertForm::class,
+                    $enterprise,
+                    array('select' => $this->select, 'type' => 'create')
+                  );
      }
     }
-
+    else {
+     $this->errors = $form->getErrors();
+    }
    return $form->createView();
   }
 

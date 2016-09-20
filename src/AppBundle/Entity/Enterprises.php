@@ -34,7 +34,11 @@ class Enterprises
     /**
      * @var string
      *
-     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = 9,
+     *      max = 9
+     * )
+     *
      *
      * @ORM\Column(name="enterprise_siren", type="string", length=9)
      */

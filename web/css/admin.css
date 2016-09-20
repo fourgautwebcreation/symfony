@@ -10,6 +10,7 @@ input[type="submit"], button {
   color: #FFFFFF;
   display: block;
   margin: 1em auto !important;
+  width: auto !important;
   border: 2px solid #4b4a4a;
   -moz-border: 2px solid #4b4a4a;
   -o-border: 2px solid #4b4a4a;

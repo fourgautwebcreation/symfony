@@ -37,20 +37,23 @@ class UpdateForm extends AbstractType
            array(
             'label' => 'Nom',
             'attr' => array('name' => 'nom'),
-            'required' => true
+            'required' => true,
+            'invalid_message' => 'Le nom ne doit pas être vide'
                )
            );
      $builder->add('EnterpriseAdress', TextType::class,
            array(
            'label' => 'Adresse',
-           'required' => true
+           'required' => true,
+           'invalid_message' => 'L\'adresse ne doit pas être vide'
               )
            );
      $builder->add('EnterpriseSiren', TextType::class,
            array(
             'label'=>'N° Siren',
-            'attr' => array('minlength' => '9'),
-            'required' => true
+            'attr' => array('minlength' => '9', 'maxlength' => '9'),
+            'required' => true,
+            'invalid_message' => 'Un numéro siren comporte 9 chiffres'
                )
            );
            $builder->add('EnterpriseSector', ChoiceType::class,

@@ -13,11 +13,10 @@
     <section>
 
      {# Erreurs #}
-     {% if errors is not null %}
-     <div class="row">
-      <div class="alert alert-danger">Tous les champs doivent être renseignés</div>
-     </div>
+     {% if form_errors(insert) is not null %}
+      {{form_errors(insert)}}
      {% endif %}
+
 
      {# Symbole +/- ajout d'une entreprise #}
      <div class="row insert">
@@ -31,25 +30,24 @@
         <h2>Ajouter une entreprise</h2>
        </div>
       </div>
+
       <div class="row">
        {{ form_start(insert)}}
        <div class="col-sm-2">
-        {{ form_row(insert.EnterpriseName, {attr:{ 'class': 'form-content', 'required':'required' }}) }}
+        {{ form_widget(insert.EnterpriseName, {attr:{ 'class': 'form-content', 'required':'required', 'placeholder':'Nom de l\'entreprise' }}) }}
        </div>
        <div class="col-sm-4">
-        {{ form_row(insert.EnterpriseAdress, {attr:{ 'class': 'form-content', 'required':'required' }}) }}
+        {{ form_widget(insert.EnterpriseAdress, {attr:{ 'class': 'form-content', 'required':'required', 'placeholder':'Adresse de l\'entreprise' }}) }}
        </div>
        <div class="col-sm-2">
-        {{ form_row(insert.EnterpriseSiren, {attr:{ 'class': 'form-content', 'required':'required' }}) }}
+        {{ form_widget(insert.EnterpriseSiren, {attr:{ 'class': 'form-content', 'required':'required', 'placeholder':'N° siren de l\'entreprise' }}) }}
        </div>
        <div class="col-sm-3">
-        {{ form_row(insert.EnterpriseSector, {attr:{ 'class': 'form-content', 'required':'required' }}) }}
+        {{ form_widget(insert.EnterpriseSector, {attr:{ 'class': 'form-content', 'required':'required' }}) }}
        </div>
       <div class="col-sm-1">
-       <div class="form-group">
         <input type="submit" class="form-control" value="Enregistrer" />
-       </div> 
-       </div>
+      </div>
        {{ form_end(insert)}}
       </div>
      </div>
@@ -62,6 +60,7 @@
        </div>
       </div>
      {% for key,form in forms %}
+        {{form_errors(form.update)}}
         <div class="row modifications">
          {{ form_start(form.update, {attr:{'data-key':key, 'class':'form_enterprise'}}) }}
           <div class="col-sm-2">
