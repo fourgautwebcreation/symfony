@@ -17,19 +17,31 @@ class AdminController extends Controller
  public $select;
  public $forms;
 
-   // Création de la liste des secteurs disponibles
-   public function createListSectors()
+  // Création de la liste des secteurs disponibles
+  private function createListSectors()
+  {
+   $select = array();
+   $em = $this->getDoctrine()->getManager();
+   $repository = $em->getRepository('AppBundle:Sectors');
+   $list = $repository->findAll();
+   foreach($list as $list)
    {
-    $select = array();
-    $em = $this->getDoctrine()->getManager();
-    $repository = $em->getRepository('AppBundle:Sectors');
-    $list = $repository->findAll();
-    foreach($list as $list)
-    {
-     $select[$list->sectorName] = $list->id;
-    }
-    $this->select = $select;
+    $select[$list->sectorName] = $list->id;
    }
+   $this->select = $select;
+  }
+
+  // Suppression d'une entreprise
+  private function deleteEnterprise($datas)
+  {
+   $em = $this->getDoctrine()->getManager();
+   $sector = $em->getRepository('AppBundle:Sectors')->find($datas->enterpriseSector);
+   $datas->setEnterpriseSectorName($sector);
+
+   $em = $this->getDoctrine()->getManager();
+   $em->persist($datas);
+   $em->flush();
+  }
 
   //Création du formulaire d'insertion d'une entreprise
   private function createInsert($request)
@@ -86,13 +98,7 @@ class AdminController extends Controller
     //update
     if ($form->isValid()) {
      $datas = $form->getData();
-     $em = $this->getDoctrine()->getManager();
-     $sector = $em->getRepository('AppBundle:Sectors')->find($datas->enterpriseSector);
-     $datas->setEnterpriseSectorName($sector);
-
-     $em = $this->getDoctrine()->getManager();
-     $em->persist($datas);
-     $em->flush();
+     self::deleteEnterprise($datas);
     }
     $forms[$i]['update'] = $form->createView();
 

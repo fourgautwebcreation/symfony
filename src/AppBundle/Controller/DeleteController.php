@@ -19,7 +19,7 @@ class DeleteController extends Controller
  {
   if ($request->getMethod() == 'POST') {
       if($this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')){
-       $datas = $_POST['delete_enterprise'];
+       $datas = $request->get('delete_enterprise');
        $em = $this->getDoctrine()->getManager();
        $enterprise = $em->getRepository('AppBundle:Enterprises')->find($datas['id']);
        $em->remove($enterprise);
