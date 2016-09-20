@@ -5,10 +5,8 @@ namespace AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use AppBundle\Entity\Enterprises;
-use AppBundle\Form as Forms;
+use AppBundle\Form\Type as Forms;
 
 class AdminController extends Controller
 {
